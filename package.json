@@ -1,0 +1,36 @@
+{
+  "name": "personal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "proxy": "http://localhost:8080",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node app.js",
+    "server": "nodemon app.js",
+    "client": "npm run start --prefix client",
+    "client:install": "npm install --prefix client",
+    "client:build": "npm run build --prefix client",
+    "dev": "cross-env NODE_ENV=development concurrently \"npm run server\"  \"npm run client\""
+  },
+  "author": "Nikita",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jsonwebtoken": "^8.5.9",
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.8",
+    "express": "^4.18.2",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^8.5.1",
+    "materialize-css": "^1.0.0-rc.2",
+    "mongoose": "^6.8.0",
+    "react-router-dom": "^6.4.4",
+    "shortid": "^2.2.16"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.12",
+    "concurrently": "^7.6.0",
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.20"
+  }
+}

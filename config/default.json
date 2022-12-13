@@ -1,0 +1,6 @@
+{
+    "port": 8080,
+    "baseUrl": "http://localhost:8080",
+    "jwtSecret": "nikita_sectet",
+    "mongoUri": "mongodb+srv://nikita:12345678f@university.gkvbsad.mongodb.net/app?retryWrites=true&w=majority"
+}
