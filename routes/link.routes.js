@@ -17,8 +17,6 @@ router.post("/generate", auth, async (req, res) => {
     if (existing) {
       return res.json({ link: existing });
     }
-    console.log(existing);
-
 
     const to = baseUrl + "/t/" + code;
 
@@ -49,7 +47,6 @@ router.get("/", auth, async (req, res) => {
 
 router.get("/:id", auth, async (req, res) => {
   try {
-    console.log(req.params.id);
     const link = await Link.findById(req.params.id);
 
     res.json(link);

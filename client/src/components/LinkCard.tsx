@@ -15,8 +15,6 @@ interface LinkCardUse {
 }
 
 export const LinkCard: FC<LinkCardUse> = ( {link}) => {
-
-  console.log(link);
   
   return (
     <>
