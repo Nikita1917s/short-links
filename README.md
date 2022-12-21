@@ -20,3 +20,4 @@
 
 1. `npm install`
 2. Run `npm run dev` for local development
+3. Check the http://localhost:3000/
