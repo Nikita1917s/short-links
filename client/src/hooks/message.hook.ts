@@ -1,4 +1,5 @@
 import {useCallback} from 'react'
+declare const M: any;
 
 export const useMessage = () => {
   return useCallback((text: string | null) => {
