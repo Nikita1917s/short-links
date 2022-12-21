@@ -1,9 +1,10 @@
 import express from "express";
 import config from "config";
 import mongoose from "mongoose";
-import path from "path";
 import authRoute from "./routes/auth.routes.js";
 import linkRoute from "./routes/link.routes.js";
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const PORT = config.get("port") || 3000;
 
