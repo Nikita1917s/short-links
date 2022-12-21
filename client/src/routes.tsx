@@ -1,9 +1,9 @@
 import React from "react";
 
-import { LinksPage } from "./pages/LinksPage";
-import { CreatePage } from "./pages/CreatePage";
-import { DetailPage } from "./pages/DetailPage";
-import { AuthPage } from "./pages/AuthPage";
+import  LinksPage  from "./pages/LinksPage";
+import  CreatePage  from "./pages/CreatePage";
+import  DetailPage  from "./pages/DetailPage";
+import  AuthPage  from "./pages/AuthPage";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 export const useRoutes = (isAuthenticated: boolean) => {

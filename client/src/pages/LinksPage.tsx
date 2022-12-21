@@ -5,7 +5,7 @@ import { Loader } from "../components/Loader";
 import { AuthContext } from "../context/AuthContext";
 import useHttp from "../hooks/http.hooks";
 
-export const LinksPage: FC = () => {
+const LinksPage: FC = () => {
   const [links, setLinks] = useState<LinkCardProps[]>([]);
   const { loading, request } = useHttp();
   const { token } = useContext(AuthContext);
@@ -15,7 +15,7 @@ export const LinksPage: FC = () => {
       const fetched = await request("/api/link", "GET", null, {
         Authorization: `Bearer ${token}`,
       });
-      setLinks(fetched)
+      setLinks(fetched);
     } catch (e) {}
   }, [request, token]);
 
@@ -24,7 +24,14 @@ export const LinksPage: FC = () => {
   }, [fetchLinks]);
 
   if (loading) {
-    return <Loader/>
+    return <Loader />;
   }
-  return <> {!loading && <LinksList links={links} />}</>;
+  return (
+    <div data-testid="links-page">
+      {" "}
+      {!loading && <LinksList links={links} />}
+    </div>
+  );
 };
+
+export default LinksPage

@@ -3,8 +3,8 @@ import { AuthContext } from "../context/AuthContext";
 import useHttp from "../hooks/http.hooks";
 import { useMessage } from "../hooks/message.hook";
 
-export const AuthPage: FC = () => {
-  const auth = useContext(AuthContext)
+const AuthPage: FC = () => {
+  const auth = useContext(AuthContext);
   const { loading, error, request, clearError } = useHttp();
   const message = useMessage();
 
@@ -23,25 +23,25 @@ export const AuthPage: FC = () => {
   }, [clearError, error, message]);
 
   useEffect(() => {
-    window.M.updateTextFields()
-  },[]);
+    window?.M?.updateTextFields();
+  }, []);
 
   const registerHandler = async () => {
     try {
       const data = await request(`/api/auth/register`, "POST", { ...form });
-      message(data.message)
+      message(data.message);
     } catch (error) {}
   };
 
   const loginHandler = async () => {
     try {
       const data = await request(`/api/auth/login`, "POST", { ...form });
-      message(data.message)
-      auth.login(data.token, data.userId)
+      message(data.message);
+      auth.login(data.token, data.userId);
     } catch (error) {}
   };
   return (
-    <div className="row">
+    <div className="row" data-testid="auth-page">
       <div className="col s6 offset-s3">
         <h1>Short links</h1>
         <div className="card blue darken-1">
@@ -80,7 +80,7 @@ export const AuthPage: FC = () => {
               className="btn yellow darken-4"
               style={{ marginRight: 10 }}
               disabled={loading}
-                onClick={loginHandler}
+              onClick={loginHandler}
             >
               Enter
             </button>
@@ -97,3 +97,5 @@ export const AuthPage: FC = () => {
     </div>
   );
 };
+
+export default AuthPage

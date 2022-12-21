@@ -3,31 +3,35 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import useHttp from "../hooks/http.hooks";
 
-export const CreatePage: FC = () =>{
+const CreatePage: FC = () => {
   const auth = useContext(AuthContext);
   const history = useNavigate();
-  const {request} = useHttp();
+  const { request } = useHttp();
   const [link, setLink] = useState("");
 
   const pressHandler = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       try {
-        const data = await request('/api/link/generate', 'POST', {from: link}, {
-          Authorization: `Bearer ${auth.token}`
-        })
+        const data = await request(
+          "/api/link/generate",
+          "POST",
+          { from: link },
+          {
+            Authorization: `Bearer ${auth.token}`,
+          }
+        );
 
-       history(`/detail/${data.link._id}`);
-
+        history(`/detail/${data.link._id}`);
       } catch (e) {}
     }
   };
 
   useEffect(() => {
-    window.M.updateTextFields()
-  }, [])
+    window?.M?.updateTextFields();
+  }, []);
 
   return (
-    <div className="row">
+    <div className="row" data-testid="create-page">
       <div className="col s8 offset-s2" style={{ paddingTop: "2rem" }}>
         <div className="input-field">
           <input
@@ -38,9 +42,13 @@ export const CreatePage: FC = () =>{
             onChange={(e) => setLink(e.target.value)}
             onKeyPress={pressHandler}
           />
-          <label htmlFor="link">Enter link to make is short and press Enter</label>
+          <label htmlFor="link">
+            Enter link to make is short and press Enter
+          </label>
         </div>
       </div>
     </div>
   );
 };
+
+export default CreatePage

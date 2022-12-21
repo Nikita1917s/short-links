@@ -5,6 +5,11 @@
   "main": "app.js",
   "type": "module",
   "proxy": "http://localhost:8080",
+  "jest": {
+    "moduleNameMapper": {
+      "axios": "axios/dist/node/axios.cjs"
+    }
+  },
   "scripts": {
     "start": "cross-env NODE_ENV=production node app.js",
     "server": "nodemon app.js",
@@ -12,11 +17,15 @@
     "client:install": "npm install --prefix client",
     "client:build": "npm run build --prefix client",
     "build": "npm run build --prefix client",
-    "dev": "cross-env NODE_ENV=development concurrently \"npm run server\"  \"npm run client\""
+    "dev": "cross-env NODE_ENV=development concurrently \"npm run server\"  \"npm run client\"",
+    "test": "npm run test --prefix client"
   },
   "author": "Nikita",
   "license": "ISC",
   "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
     "@types/jsonwebtoken": "^8.5.9",
     "bcryptjs": "^2.4.3",
     "config": "^3.3.8",
